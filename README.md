@@ -15,7 +15,7 @@ $ docker run -d --name SenseVoice -p 8080:8080 \
          --runtime=nvidia \
          -e NVIDIA_DRIVER_CAPABILITIES=all \
          -e NVIDIA_VISIBLE_DEVICES=all \
-         catcto/SenseVoiceDocker
+         catcto/sensevoice
 ```
 
 ### Using docker compose
@@ -24,7 +24,7 @@ $ docker run -d --name SenseVoice -p 8080:8080 \
 ```yaml
 services:
   SenseVoice:
-    image: catcto/SenseVoiceDocker
+    image: catcto/sensevoice
     container_name: SenseVoice
     restart: always
     ports:

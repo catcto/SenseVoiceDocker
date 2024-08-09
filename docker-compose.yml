@@ -1,9 +1,11 @@
 services:
   SenseVoice:
-    image: dev/sense-voice-docker
+    image: catcto/sensevoice
     container_name: SenseVoice
     restart: always
+    ports:
+      - "8080:8080"
+    runtime: nvidia
     environment:
       NVIDIA_DRIVER_CAPABILITIES: all
       NVIDIA_VISIBLE_DEVICES: all
-    command: ["python","webui.py"]

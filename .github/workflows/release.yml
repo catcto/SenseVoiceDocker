@@ -31,4 +31,4 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: ${{ github.repository }}:latest,${{ github.repository }}:${{ github.ref_name }}
+          tags: catcto/sensevoice:latest,catcto/sensevoice:${{ github.ref_name }}
