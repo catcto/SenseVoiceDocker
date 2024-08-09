@@ -1,7 +1,7 @@
 services:
-  SenseVoice:
-    image: catcto/sensevoice
-    container_name: SenseVoice
+  sensevoice:
+    image: sensevoice
+    container_name: sensevoice
     restart: always
     ports:
       - "8080:8080"
