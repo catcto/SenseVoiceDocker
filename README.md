@@ -1,6 +1,6 @@
 # SenseVoiceDocker
 
-This repository provides a Docker image for [SenseVoice](https://github.com/FunAudioLLM/SenseVoice), Deploy the SenseVoice ASR service in a Docker container.
+This repository provides a Docker image for [SenseVoice](https://github.com/FunAudioLLM/SenseVoice), enabling you to deploy the SenseVoice ASR service within a Docker container.
 
 ## Usage
 
