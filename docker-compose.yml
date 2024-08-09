@@ -1,0 +1,9 @@
+services:
+  SenseVoice:
+    image: dev/sense-voice-docker
+    container_name: SenseVoice
+    restart: always
+    environment:
+      NVIDIA_DRIVER_CAPABILITIES: all
+      NVIDIA_VISIBLE_DEVICES: all
+    command: ["python","webui.py"]
