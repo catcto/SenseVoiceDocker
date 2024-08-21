@@ -1,11 +1,4 @@
 FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04 as base
-
-# Set proxy
-ARG http_proxy=""
-ARG https_proxy=""
-ENV http_proxy=${http_proxy}
-ENV https_proxy=${https_proxy}
-
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     tar \
@@ -13,6 +6,12 @@ RUN apt-get update && apt-get install -y \
     git \
     bash \
     vim
+
+# Set proxy
+ARG http_proxy=""
+ARG https_proxy=""
+ENV http_proxy=${http_proxy}
+ENV https_proxy=${https_proxy}
 
 # Install Miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
