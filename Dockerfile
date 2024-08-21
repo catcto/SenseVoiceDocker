@@ -21,9 +21,13 @@ RUN git clone https://github.com/FunAudioLLM/SenseVoice.git /root/SenseVoice
 WORKDIR /root/SenseVoice
 RUN pip install -r requirements.txt
 
+# Set environment variables
 ENV SENSEVOICE_DEVICE=cuda:0
 ENV API_HOST=0.0.0.0
 ENV API_PORT=8080
+
+# Run
+COPY donwload_model.py .
 COPY api.py .
-RUN python api.py
-CMD python api.py --start
+RUN python donwload_model.py
+CMD python api.py

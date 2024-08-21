@@ -8,7 +8,6 @@ from funasr.utils.postprocess_utils import rich_transcription_postprocess
 import requests
 import os
 import uuid
-import sys
 
 class AsrRequest(BaseModel):
     url: str
@@ -58,10 +57,7 @@ def asr(request: AsrRequest):
     return AsrResponse(text=text)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2 and sys.argv[1] == "--start":
-        api_port = os.getenv("API_PORT")
-        api_host = os.getenv("API_HOST")
-        import uvicorn
-        uvicorn.run(app, host=api_host, port=int(api_port))
-    else:
-        print("model files downloaded")
+    api_port = os.getenv("API_PORT")
+    api_host = os.getenv("API_HOST")
+    import uvicorn
+    uvicorn.run(app, host=api_host, port=int(api_port))

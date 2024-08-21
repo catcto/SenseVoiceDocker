@@ -9,17 +9,17 @@ To run this Docker container, you’ll need a machine with NVIDIA GPU support an
 ### Build the Docker image
 
 ```shell
-$ docker build -t sensevoice .
+$ docker build -t SenseVoice .
 ```
 
 ### Using docker command
 
 ```shell
-$ docker run -d --name SenseVoice -p 8080:8080 \
+$ docker run -d --name sensevoice -p 8080:8080 \
          --runtime=nvidia \
          -e NVIDIA_DRIVER_CAPABILITIES=all \
          -e NVIDIA_VISIBLE_DEVICES=all \
-         sensevoice
+         SenseVoice
 ```
 
 ### Using docker compose
@@ -27,12 +27,12 @@ $ docker run -d --name SenseVoice -p 8080:8080 \
 1. Create a `docker-compose.yml` file:
 ```yaml
 services:
-  SenseVoice:
-    image: sensevoice
-    container_name: SenseVoice
-    restart: always
+  sensevoice:
+    image: SenseVoice
+    container_name: sensevoice
     ports:
       - "8080:8080"
+    restart: always
     runtime: nvidia
     environment:
       NVIDIA_DRIVER_CAPABILITIES: all
@@ -51,10 +51,5 @@ To test the API, use `curl`:
 $ curl -X POST http://127.0.0.1:8080/api/v1/asr -H "Content-Type: application/json" -d '{"url": "https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/vad_example.wav", "language": "auto"}'
 ```
 
-## Performance Testing
-
-The following are the test results when running on an RTX 4090:
-```shell
-```
 
 The source code is available on [GitHub](https://github.com/catcto/SenseVoiceDocker)
