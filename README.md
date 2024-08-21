@@ -13,8 +13,8 @@ $ docker build -t sensevoice .
 
 $ # optional build with proxy
 $ docker build \
-        --build-arg http_proxy=http://192.168.22.2:18888 \
-        --build-arg https_proxy=http://192.168.22.2:18888 \
+        --build-arg http_proxy=[PROXY] \
+        --build-arg https_proxy=[PROXY] \
          -t sensevoice .
 ```
 
