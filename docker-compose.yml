@@ -1,7 +1,7 @@
 services:
-  sensevoice:
+  sensevoice_server:
     image: sensevoice
-    container_name: sensevoice
+    container_name: sensevoice_server
     ports:
       - "8080:8080"
     restart: always
