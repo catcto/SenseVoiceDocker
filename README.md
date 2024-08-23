@@ -10,12 +10,6 @@ To run this Docker container, you’ll need a machine with NVIDIA GPU support an
 
 ```shell
 $ docker build -t sensevoice .
-
-$ # optional build with proxy
-$ docker build \
-         --build-arg http_proxy=[PROXY] \
-         --build-arg https_proxy=[PROXY] \
-         -t sensevoice .
 ```
 
 ### Using docker command
