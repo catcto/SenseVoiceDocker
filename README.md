@@ -48,5 +48,18 @@ $ docker compose up -d
 To test the API, use `curl`:
 
 ```shell
-$ curl -X POST http://127.0.0.1:8080/api/v1/asr -H "Content-Type: application/json" -d '{"url": "https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/vad_example.wav", "language": "auto"}'
+# download url audio file example
+curl -X 'POST' \
+  'http://127.0.0.1:8081/api/v1/asr' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'url=https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/vad_example.wav&language=auto'
+
+# upload audio file example
+curl -X 'POST' \
+  'http://127.0.0.1:8081/api/v1/asr' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@vad_example.wav' \
+  -F 'language=auto'
 ```
