@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04 as base
+FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04 AS base
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     tar \
