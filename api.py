@@ -42,6 +42,7 @@ def save_uploaded_file(upload_file: UploadFile, save_path: str):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error saving file: {str(e)}")
 
+
 # Automatic Speech Recognition (ASR) API
 @app.post("/api/v1/asr", response_model=AsrResponse)
 async def asr(
