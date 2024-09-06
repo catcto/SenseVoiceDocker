@@ -30,4 +30,4 @@ ENV API_PORT=8080
 COPY download_model.py .
 COPY api.py .
 RUN python download_model.py
-CMD python api.py
+CMD ["python", "api.py"]
