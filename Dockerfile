@@ -23,6 +23,8 @@ ENV PATH="/root/miniconda3/bin:/opt/conda/envs/sensevoice/bin:${PATH}"
 RUN git clone https://github.com/catcto/SenseVoice /root/SenseVoice
 WORKDIR /root/SenseVoice
 RUN pip install -r requirements.txt
+RUN pip install onnx
+RUN pip install onnxconverter_common
 
 # Set environment variables
 ENV SENSEVOICE_DEVICE=cuda:0

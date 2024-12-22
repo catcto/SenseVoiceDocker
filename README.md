@@ -53,7 +53,7 @@ curl -X 'POST' \
   'http://127.0.0.1:8080/api/v1/asr' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'url=https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/vad_example.wav&language=auto'
+  -d 'url=https://iic-sensevoice.ms.show/file=/tmp/gradio/1f7cfa14376cc0bb5f6071a7b0d7bea610842119/zh.mp3'
 
 # upload audio file example
 curl -X 'POST' \
