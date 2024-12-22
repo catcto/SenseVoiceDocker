@@ -15,8 +15,11 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 ENV PATH="/root/miniconda3/bin:${PATH}"
 
 # Install requirements
-RUN conda config --add channels conda-forge
-RUN conda install python==3.8
+RUN conda config --add channels conda-forge && \
+    conda config --set channel_priority strict
+RUN conda create -y -n sensevoice python=3.8
+ENV CONDA_DEFAULT_ENV=sensevoice
+ENV PATH="/root/miniconda3/bin:/opt/conda/envs/sensevoice/bin:${PATH}"
 RUN git clone https://github.com/FunAudioLLM/SenseVoice.git /root/SenseVoice
 WORKDIR /root/SenseVoice
 RUN pip install -r requirements.txt
