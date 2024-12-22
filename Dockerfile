@@ -20,7 +20,7 @@ RUN conda config --add channels conda-forge && \
 RUN conda create -y -n sensevoice python=3.8
 ENV CONDA_DEFAULT_ENV=sensevoice
 ENV PATH="/root/miniconda3/bin:/opt/conda/envs/sensevoice/bin:${PATH}"
-RUN git clone https://github.com/FunAudioLLM/SenseVoice.git /root/SenseVoice
+RUN git clone https://github.com/catcto/SenseVoice /root/SenseVoice
 WORKDIR /root/SenseVoice
 RUN pip install -r requirements.txt
 
