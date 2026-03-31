@@ -1,38 +1,29 @@
-FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04 AS base
+FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    tar \
-    wget \
-    git \
-    bash \
-    vim
+	ffmpeg libsndfile1 git && \
+	rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-    && mkdir /root/.conda \
-    && bash Miniconda3-latest-Linux-x86_64.sh -b \
-    && rm -f Miniconda3-latest-Linux-x86_64.sh
-ENV PATH="/root/miniconda3/bin:${PATH}"
+# Set working directory
+WORKDIR /root/app
 
-# Install requirements
-RUN conda config --add channels conda-forge && \
-    conda config --set channel_priority strict
-RUN conda create -y -n sensevoice python=3.8
-ENV CONDA_DEFAULT_ENV=sensevoice
-ENV PATH="/root/miniconda3/bin:/opt/conda/envs/sensevoice/bin:${PATH}"
-RUN git clone https://github.com/catcto/SenseVoice /root/SenseVoice
-WORKDIR /root/SenseVoice
-RUN pip install -r requirements.txt
-RUN pip install onnx
-RUN pip install onnxconverter_common
+# Clone SenseVoice
+RUN git clone https://github.com/FunAudioLLM/SenseVoice.git /root/app
+# RUN git clone https://gh.catcto.com/https://github.com/FunAudioLLM/SenseVoice.git /root/app
+
+# Install Python requirements
+RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --trusted-host pypi.mirrors.ustc.edu.cn
 
 # Set environment variables
-ENV SENSEVOICE_DEVICE=cuda:0
 ENV API_HOST=0.0.0.0
 ENV API_PORT=8080
 
-# Run
+# Download model
 COPY download_model.py .
 RUN python download_model.py
+
+# Run the application
 COPY api.py .
 CMD ["python", "api.py"]

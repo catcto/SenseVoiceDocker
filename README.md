@@ -43,6 +43,20 @@ services:
 $ docker compose up -d
 ```
 
+## Debugging
+
+```shell
+$ docker run -it --rm \
+         --runtime=nvidia \
+         -e NVIDIA_DRIVER_CAPABILITIES=all \
+         -e NVIDIA_VISIBLE_DEVICES=all \
+         sensevoice bash
+
+$ python -c "import torch; print('torch:', torch.__version__); print('cuda:', torch.version.cuda); print('gpu available:', torch.cuda.is_available()); print('gpu count:', torch.cuda.device_count())"
+
+$ du -h /root/.cache/modelscope/hub/models/iic/SenseVoiceSmall/
+```
+
 ## Testing
 
 To test the API, use `curl`:
